@@ -24,11 +24,11 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let path = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
-                var myStrings = data.components(separatedBy: .newlines)
-                if myStrings.last == "" {
-                    myStrings.removeLast()
+                var ligandsArray = data.components(separatedBy: .newlines)
+                if ligandsArray.last == "" {
+                    ligandsArray.removeLast()
                 }
-                ligands = myStrings
+                ligands = ligandsArray
                 filterLigands = ligands
             } catch {
                 print(error)
@@ -38,10 +38,8 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterLigands = searchText.isEmpty ? ligands : ligands.filter { (item: String) -> Bool in
-            // If dataItem matches the searchText, return true to include it
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        
         tableView.reloadData()
     }
     

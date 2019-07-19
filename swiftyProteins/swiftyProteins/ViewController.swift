@@ -11,23 +11,28 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
    
-    @IBOutlet weak var loginTouchIDButton: UIButton!
-    @IBOutlet weak var loginFaceIDButton: UIButton!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
     let context = LAContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-            if context.biometryType == .faceID {
-                loginTouchIDButton.removeFromSuperview()
-                loginFaceIDButton.layer.cornerRadius = 5
-            } else {
-                loginFaceIDButton.removeFromSuperview()
-                loginTouchIDButton.layer.cornerRadius = 5
+            switch context.biometryType {
+            case .touchID:
+                self.loginButtonOutlet.setTitle("Login with TouchID", for: .normal)
+                self.loginButtonOutlet.setImage(UIImage(named: "icons8-touch-id-48"), for: .normal)
+                self.loginButtonOutlet.layer.cornerRadius = 5
+            case .faceID:
+                self.loginButtonOutlet.setTitle("Login with FaceID", for: .normal)
+                self.loginButtonOutlet.setImage(UIImage(named: "icons8-face-id-64"), for: .normal)
+                self.loginButtonOutlet.layer.cornerRadius = 5
+            case .none:
+                print("none biometry type")
+            @unknown default:
+                print("error")
             }
         }
     }
-    
     
     @IBAction func loginButton(_ sender: UIButton) {
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "You need to be authenticate") {succes,error in
@@ -36,7 +41,7 @@ class ViewController: UIViewController {
                     self.performSegue(withIdentifier: "authenticateSucces", sender: "Foo")
                 }
             } else {
-                print(error)
+                self.makeAlert(title: "error", message: "\(error!)")
             }
         }
     }
