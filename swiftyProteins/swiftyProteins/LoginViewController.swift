@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  swiftyProteins
 //
 //  Created by Yaroslava HLIBOCHKO on 7/17/19.
@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
    
     @IBOutlet weak var loginButtonOutlet: UIButton!
     let context = LAContext()

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.window?.rootViewController = vc
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="0HZ-g4-Axo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Y4I-4F-rTb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swifty Proteins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgF-5E-c6N">
@@ -33,13 +33,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0HZ-g4-Axo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EiT-9z-0hX"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4I-4F-rTb" secondAttribute="trailing" id="1Fa-8C-Obc"/>
+                            <constraint firstAttribute="bottom" secondItem="Y4I-4F-rTb" secondAttribute="bottom" id="SGK-PG-WTu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wgF-5E-c6N" secondAttribute="trailing" id="VI6-L8-O55"/>
                             <constraint firstItem="wgF-5E-c6N" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="VUl-7n-P2G"/>
-                            <constraint firstItem="0HZ-g4-Axo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bSD-Qr-KZp"/>
-                            <constraint firstItem="0HZ-g4-Axo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="f9d-gs-Pof"/>
+                            <constraint firstItem="Y4I-4F-rTb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="cyh-4i-mE7"/>
+                            <constraint firstItem="Y4I-4F-rTb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="jli-fg-zdh"/>
                             <constraint firstItem="wgF-5E-c6N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kpU-st-Zmf"/>
-                            <constraint firstAttribute="bottom" secondItem="0HZ-g4-Axo" secondAttribute="bottom" id="sF7-YZ-xpd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="1200" height="800"/>
+        <image name="background.jpg" width="852" height="480"/>
     </resources>
 </document>

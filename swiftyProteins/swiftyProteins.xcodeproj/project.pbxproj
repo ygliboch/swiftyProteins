@@ -10,8 +10,10 @@
 		649060E522DF82F500F5082D /* TabViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649060E422DF82F500F5082D /* TabViewViewController.swift */; };
 		649060E922DF95A100F5082D /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 649060E822DF95A100F5082D /* ligands.txt */; };
 		649060EB22DF98ED00F5082D /* LigandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */; };
+		6491D65B22E22948003AE21D /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6491D65A22E22947003AE21D /* background.jpg */; };
+		64AC663E22E21268005030EA /* LigandModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AC663D22E21268005030EA /* LigandModelViewController.swift */; };
 		64BFE87022DF448E00AE0385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFE86F22DF448E00AE0385 /* AppDelegate.swift */; };
-		64BFE87222DF448E00AE0385 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFE87122DF448E00AE0385 /* ViewController.swift */; };
+		64BFE87222DF448E00AE0385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFE87122DF448E00AE0385 /* LoginViewController.swift */; };
 		64BFE87522DF448E00AE0385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BFE87322DF448E00AE0385 /* Main.storyboard */; };
 		64BFE87722DF448F00AE0385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BFE87622DF448F00AE0385 /* Assets.xcassets */; };
 		64BFE87A22DF448F00AE0385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BFE87822DF448F00AE0385 /* LaunchScreen.storyboard */; };
@@ -21,9 +23,11 @@
 		649060E422DF82F500F5082D /* TabViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewViewController.swift; sourceTree = "<group>"; };
 		649060E822DF95A100F5082D /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
 		649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandTableViewCell.swift; sourceTree = "<group>"; };
+		6491D65A22E22947003AE21D /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../../../background.jpg; sourceTree = "<group>"; };
+		64AC663D22E21268005030EA /* LigandModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandModelViewController.swift; sourceTree = "<group>"; };
 		64BFE86C22DF448E00AE0385 /* swiftyProteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftyProteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFE86F22DF448E00AE0385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64BFE87122DF448E00AE0385 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64BFE87122DF448E00AE0385 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		64BFE87422DF448E00AE0385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64BFE87622DF448F00AE0385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BFE87922DF448F00AE0385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,11 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				64BFE86F22DF448E00AE0385 /* AppDelegate.swift */,
-				64BFE87122DF448E00AE0385 /* ViewController.swift */,
+				64BFE87122DF448E00AE0385 /* LoginViewController.swift */,
 				64BFE87322DF448E00AE0385 /* Main.storyboard */,
 				649060E822DF95A100F5082D /* ligands.txt */,
 				649060E422DF82F500F5082D /* TabViewViewController.swift */,
+				64AC663D22E21268005030EA /* LigandModelViewController.swift */,
 				64BFE87622DF448F00AE0385 /* Assets.xcassets */,
+				6491D65A22E22947003AE21D /* background.jpg */,
 				649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */,
 				64BFE87822DF448F00AE0385 /* LaunchScreen.storyboard */,
 				64BFE87B22DF448F00AE0385 /* Info.plist */,
@@ -132,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64BFE87A22DF448F00AE0385 /* LaunchScreen.storyboard in Resources */,
+				6491D65B22E22948003AE21D /* background.jpg in Resources */,
 				64BFE87722DF448F00AE0385 /* Assets.xcassets in Resources */,
 				64BFE87522DF448E00AE0385 /* Main.storyboard in Resources */,
 				649060E922DF95A100F5082D /* ligands.txt in Resources */,
@@ -145,8 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64BFE87222DF448E00AE0385 /* ViewController.swift in Sources */,
+				64BFE87222DF448E00AE0385 /* LoginViewController.swift in Sources */,
 				64BFE87022DF448E00AE0385 /* AppDelegate.swift in Sources */,
+				64AC663E22E21268005030EA /* LigandModelViewController.swift in Sources */,
 				649060EB22DF98ED00F5082D /* LigandTableViewCell.swift in Sources */,
 				649060E522DF82F500F5082D /* TabViewViewController.swift in Sources */,
 			);

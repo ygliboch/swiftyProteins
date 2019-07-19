@@ -21,6 +21,9 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        let imgView = UIImageView(image: UIImage(named: "background"))
+        tableView.backgroundView = imgView
+        imgView.contentMode = .scaleAspectFill
         if let path = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
@@ -49,10 +52,15 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? LigandTableViewCell {
+            cell.backgroundColor = .clear
             cell.titleLabel.text = filterLigands[indexPath.row]
             return cell
         } else {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelect \(indexPath.row)")
     }
 }
