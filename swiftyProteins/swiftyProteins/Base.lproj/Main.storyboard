@@ -127,13 +127,35 @@
                     <view key="view" contentMode="scaleToFill" id="n1F-SN-dFb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-f4-Orq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id7-Gw-7bE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.12906783470864436" green="0.12831305204952947" blue="0.12982261736775924" alpha="0.7695665259942005" colorSpace="custom" customColorSpace="displayP3"/>
+                            </sceneKitView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="y2O-f4-Orq" secondAttribute="bottom" id="8KG-xb-8g7"/>
+                            <constraint firstItem="id7-Gw-7bE" firstAttribute="bottom" secondItem="LPb-xr-w3V" secondAttribute="bottom" id="A2K-s3-IWD"/>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="trailing" secondItem="y2O-f4-Orq" secondAttribute="trailing" id="Bcr-ix-BhD"/>
+                            <constraint firstItem="y2O-f4-Orq" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="COM-79-WxU"/>
+                            <constraint firstItem="id7-Gw-7bE" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" id="LWg-MR-aCM"/>
+                            <constraint firstItem="id7-Gw-7bE" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="NmP-Jf-1ZV"/>
+                            <constraint firstItem="id7-Gw-7bE" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="Tx3-Yi-3xW"/>
+                            <constraint firstItem="y2O-f4-Orq" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="UMR-Bl-aq9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LPb-xr-w3V"/>
                     </view>
+                    <connections>
+                        <outlet property="sceneKitView" destination="id7-Gw-7bE" id="IIH-mJ-GMP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8g-rT-S0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="19"/>
+            <point key="canvasLocation" x="3308.6956521739135" y="18.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fyc-ck-L5n">
@@ -155,6 +177,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="852" height="480"/>
         <image name="background.jpg" width="852" height="480"/>
         <image name="launch" width="1200" height="800"/>
     </resources>

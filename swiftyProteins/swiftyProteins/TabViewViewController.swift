@@ -15,6 +15,7 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     var filterLigands: [String] = []
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    var file: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,50 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let evc = segue.destination as? LigandModelViewController {
+            if (segue.identifier == "show3DModel" && sender != nil) {
+                evc.file = sender as! String
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelect \(indexPath.row)")
+        findFileForLigand(name: filterLigands[indexPath.row], completionHandler: {response in
+            if response != nil {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "show3DModel", sender: response)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    self.makeAlert(title: "Error", message: "Ligand not found")
+                }
+            }
+        })
+        
+    }
+    
+    func findFileForLigand(name: String, completionHandler: @escaping (String?) -> Void)  {
+        guard let url = URL(string: "https://files.rcsb.org/ligands/\(name.first!)/\(name)/\(name)_ideal.pdb") else { return }
+        let task = URLSession.shared.downloadTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let data = data {
+                    if let pdbfile : String = try? String(contentsOf: data) {
+                        if pdbfile.isEmpty {
+                            self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
+                        }
+                        completionHandler(pdbfile)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func makeAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
     }
 }

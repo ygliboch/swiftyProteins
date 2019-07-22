@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import SceneKit
 
 class LigandModelViewController: UIViewController {
 
+    @IBOutlet weak var sceneKitView: SCNView!
+    var file: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        sceneKitView.scene = MyScene(file: self.file)
+        
+        //изначальное положение камеры, на сколько от нашего объекта
+        print(file)
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3Make(0, 0, 35)
+        sceneKitView.scene?.rootNode.addChildNode(cameraNode)
+        sceneKitView.allowsCameraControl = true
+        sceneKitView.autoenablesDefaultLighting = true      
     }
 }
