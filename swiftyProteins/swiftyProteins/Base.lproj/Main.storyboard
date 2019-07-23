@@ -135,22 +135,69 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.12906783470864436" green="0.12831305204952947" blue="0.12982261736775924" alpha="0.7695665259942005" colorSpace="custom" customColorSpace="displayP3"/>
                             </sceneKitView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="proteinName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-kK-bnM">
+                                <rect key="frame" x="0.0" y="96" width="414" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwQ-w4-djb">
+                                <rect key="frame" x="5" y="798" width="414" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="atomsCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnG-Ua-P8t">
+                                <rect key="frame" x="5" y="829" width="414" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="formula" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd5-Sh-0Kb">
+                                <rect key="frame" x="5" y="124.5" width="414" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="b7M-kK-bnM" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="0Fg-zu-X3Z"/>
+                            <constraint firstItem="zd5-Sh-0Kb" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" constant="5" id="15X-q5-fwp"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="y2O-f4-Orq" secondAttribute="bottom" id="8KG-xb-8g7"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="bottom" secondItem="LPb-xr-w3V" secondAttribute="bottom" id="A2K-s3-IWD"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="trailing" secondItem="y2O-f4-Orq" secondAttribute="trailing" id="Bcr-ix-BhD"/>
                             <constraint firstItem="y2O-f4-Orq" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="COM-79-WxU"/>
+                            <constraint firstItem="b7M-kK-bnM" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" constant="8" id="ChL-dL-fA0"/>
+                            <constraint firstItem="zd5-Sh-0Kb" firstAttribute="top" secondItem="b7M-kK-bnM" secondAttribute="bottom" constant="2" id="F3D-a2-WCU"/>
+                            <constraint firstItem="ZnG-Ua-P8t" firstAttribute="top" secondItem="hwQ-w4-djb" secondAttribute="bottom" constant="8" id="Kc2-PP-SDS"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" id="LWg-MR-aCM"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="NmP-Jf-1ZV"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="Tx3-Yi-3xW"/>
                             <constraint firstItem="y2O-f4-Orq" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="UMR-Bl-aq9"/>
+                            <constraint firstItem="hwQ-w4-djb" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" constant="5" id="Vxa-t9-CUd"/>
+                            <constraint firstItem="zd5-Sh-0Kb" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" constant="5" id="YHF-yf-7VR"/>
+                            <constraint firstItem="ZnG-Ua-P8t" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" constant="5" id="eZB-6Z-epi"/>
+                            <constraint firstItem="hwQ-w4-djb" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" constant="5" id="gyD-OI-ZFC"/>
+                            <constraint firstItem="ZnG-Ua-P8t" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" constant="5" id="pjW-Co-R8t"/>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="trailing" secondItem="b7M-kK-bnM" secondAttribute="trailing" id="sbG-4s-MuU"/>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="ZnG-Ua-P8t" secondAttribute="bottom" constant="10" id="vci-1U-me6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LPb-xr-w3V"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6xV-XU-hVG">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="shareButton" id="tCJ-qG-fbb">
+                            <connections>
+                                <action selector="shareButton:" destination="yZ3-CO-RW7" id="9ud-fj-yAz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="atomsCount" destination="ZnG-Ua-P8t" id="R9x-Uu-zHj"/>
+                        <outlet property="formula" destination="zd5-Sh-0Kb" id="3wP-Zi-B7h"/>
+                        <outlet property="proteinName" destination="b7M-kK-bnM" id="tww-5f-L1H"/>
                         <outlet property="sceneKitView" destination="id7-Gw-7bE" id="IIH-mJ-GMP"/>
+                        <outlet property="weight" destination="hwQ-w4-djb" id="Avx-VL-MQo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8g-rT-S0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,5 +227,6 @@
         <image name="background" width="852" height="480"/>
         <image name="background.jpg" width="852" height="480"/>
         <image name="launch" width="1200" height="800"/>
+        <image name="shareButton" width="29" height="29"/>
     </resources>
 </document>

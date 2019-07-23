@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
                     self.performSegue(withIdentifier: "authenticateSucces", sender: "Foo")
                 }
             } else {
-                self.makeAlert(title: "error", message: "\(error!)")
+                print(error)
             }
         }
     }

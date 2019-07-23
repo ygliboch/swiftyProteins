@@ -14,6 +14,7 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
     
     init(file: String) {
         super.init()
+        
         let splitFile = file.split(separator: "\n")
         for split in splitFile {
             let spaceString = split.split(separator: " ")
@@ -38,6 +39,7 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
                 }
             }
         }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
