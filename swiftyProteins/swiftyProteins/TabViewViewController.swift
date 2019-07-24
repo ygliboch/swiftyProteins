@@ -19,6 +19,7 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     var file: String?
     var name: String?
     
+    @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -91,11 +92,9 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.cellForRow(at: indexPath)?.isSelected = true
         findFileForLigandModel(name: filterLigands[indexPath.row], completionHandler: {response in
             if response != nil {
-                
                 self.file = response
                 self.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
                     if response != nil {
-                        print(response!)
                         self.performSegue(withIdentifier: "show3DModel", sender: response)
                         self.tableView.cellForRow(at: indexPath)?.isSelected = false
                         self.hideActivityIndicator()

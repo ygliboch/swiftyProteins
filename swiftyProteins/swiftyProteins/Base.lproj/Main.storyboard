@@ -111,6 +111,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ligands" id="kRD-AI-DcZ"/>
                     <connections>
+                        <outlet property="navBar" destination="kRD-AI-DcZ" id="4yt-ig-aKB"/>
                         <outlet property="searchBar" destination="sDp-Kh-oYL" id="ZIN-bI-bvR"/>
                         <outlet property="tableView" destination="sq4-08-Ruh" id="qAz-me-SvF"/>
                         <segue destination="yZ3-CO-RW7" kind="show" identifier="show3DModel" id="9w5-hw-3ee"/>
@@ -203,6 +204,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cji-k7-xCm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.80341585439416641" green="0.80215995967496612" blue="0.82409731217616577" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
