@@ -33,7 +33,12 @@ class LigandModelViewController: UIViewController {
         sceneKitView.allowsCameraControl = true
         sceneKitView.autoenablesDefaultLighting = true
         let myScene = sceneKitView.scene as! MyScene
-        infoLabel.text = "Name: " + getInfo("_chem_comp.name") + "\n" + "Formula: " + getInfo("_chem_comp.formula") + "\n" + "Weight: " +  getInfo("_chem_comp.formula_weight") + "\n" + "Atoms count: \(myScene.atomsArray.count)"
+        let nameString = getInfo("_chem_comp.name")
+        var text = ""
+        if nameString.isEmpty == false {
+            text = "Name: " + nameString + "\n"
+        }
+        infoLabel.text = text + "Formula: " + getInfo("_chem_comp.formula") + "\n" + "Weight: " +  getInfo("_chem_comp.formula_weight") + "\n" + "Atoms count: \(myScene.atomsArray.count)"
         infoLabel.layer.cornerRadius = 1
         infoLabel.isHidden = true
     }
@@ -52,11 +57,13 @@ class LigandModelViewController: UIViewController {
         for subInfo in splitInfo {
             if subInfo.contains(keyString) {
                 var getName = subInfo.split(separator: "\"")
+                var getNameBySpaces = subInfo.split(separator: " ")
                 if getName.count > 1 {
                     return "\(getName[1])"
+                } else  if getNameBySpaces.count > 1 {
+                    return "\(getNameBySpaces[1])"
                 } else {
-                    getName = subInfo.split(separator: " ")
-                    return "\(getName[1])"
+                    return ""
                 }
             }
         }

@@ -43,7 +43,10 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.view.isUserInteractionEnabled = true
+        self.view.endEditing(false)
+        searchBarSearchButtonClicked(self.searchBar)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -51,6 +54,10 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,22 +101,11 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
                         self.hideActivityIndicator()
                     }
                 })
-//                self.performSegue(withIdentifier: "show3DModel", sender: response)
-//                self.tableView.cellForRow(at: indexPath)?.isSelected = false
-//                self.hideActivityIndicator()
             }
             else {
                 self.makeAlert(title: "Error", message: "Ligand not found")
             }
         })
-//        findFileForLigandInformation(name: filterLigands[indexPath.row], completionHandler: { response in
-//            if response != nil {
-//                print(response!)
-//                self.performSegue(withIdentifier: "show3DModel", sender: response)
-//                self.tableView.cellForRow(at: indexPath)?.isSelected = false
-//                self.hideActivityIndicator()
-//            }
-//        })
     }
     
     func findFileForLigandModel(name: String, completionHandler: @escaping (String?) -> Void)  {
