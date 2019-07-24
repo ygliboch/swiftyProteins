@@ -45,6 +45,7 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         self.view.isUserInteractionEnabled = true
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterLigands = searchText.isEmpty ? ligands : ligands.filter { (item: String) -> Bool in
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
@@ -83,10 +84,19 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.cellForRow(at: indexPath)?.isSelected = true
         findFileForLigandModel(name: filterLigands[indexPath.row], completionHandler: {response in
             if response != nil {
-                self.tableView.cellForRow(at: indexPath)?.isSelected = false
+                
                 self.file = response
-                self.performSegue(withIdentifier: "show3DModel", sender: response)
-                self.hideActivityIndicator()
+                self.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
+                    if response != nil {
+                        print(response!)
+                        self.performSegue(withIdentifier: "show3DModel", sender: response)
+                        self.tableView.cellForRow(at: indexPath)?.isSelected = false
+                        self.hideActivityIndicator()
+                    }
+                })
+//                self.performSegue(withIdentifier: "show3DModel", sender: response)
+//                self.tableView.cellForRow(at: indexPath)?.isSelected = false
+//                self.hideActivityIndicator()
             }
             else {
                 self.makeAlert(title: "Error", message: "Ligand not found")
@@ -96,6 +106,8 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            if response != nil {
 //                print(response!)
 //                self.performSegue(withIdentifier: "show3DModel", sender: response)
+//                self.tableView.cellForRow(at: indexPath)?.isSelected = false
+//                self.hideActivityIndicator()
 //            }
 //        })
     }
@@ -119,25 +131,25 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         task.resume()
     }
     
-//    func findFileForLigandInformation(name: String, completionHandler: @escaping (String?) -> Void) {
-//        guard let url = URL(string: "https://files.rcsb.org/ligands/view/\(name).cif") else { return }
-//        let task = URLSession.shared.downloadTask(with: url) { data, response, error in
-//            DispatchQueue.main.async {
-//                if let data = data {
-//                    if let cifFile: String = try? String(contentsOf: data) {
-//                        if cifFile.isEmpty == false {
-//                            completionHandler(cifFile)
-//                        } else {
-//                            self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
-//                            self.view.isUserInteractionEnabled = true
-//                            self.hideActivityIndicator()
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        task.resume()
-//    }
+    func findFileForLigandInformation(name: String, completionHandler: @escaping (String?) -> Void) {
+        guard let url = URL(string: "https://files.rcsb.org/ligands/download/\(name).cif") else { return }
+        let task = URLSession.shared.downloadTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let data = data {
+                    if let cifFile: String = try? String(contentsOf: data) {
+                        if cifFile.isEmpty == false {
+                            completionHandler(cifFile)
+                        } else {
+                            self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
+                            self.view.isUserInteractionEnabled = true
+                            self.hideActivityIndicator()
+                        }
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
     
     func makeAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

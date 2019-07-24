@@ -31,6 +31,9 @@ class LoginViewController: UIViewController {
             @unknown default:
                 print("error")
             }
+        } else {
+            self.loginButtonOutlet.setTitle("Login with Password", for: .normal)
+            self.loginButtonOutlet.layer.cornerRadius = 5
         }
     }
     
@@ -40,8 +43,6 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "authenticateSucces", sender: "Foo")
                 }
-            } else {
-                print(error)
             }
         }
     }

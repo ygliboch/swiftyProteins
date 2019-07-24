@@ -11,17 +11,17 @@ import SceneKit
 
 class LigandModelViewController: UIViewController {
 
-    @IBOutlet weak var atomsCount: UILabel!
-    @IBOutlet weak var formula: UILabel!
-    @IBOutlet weak var weight: UILabel!
-    @IBOutlet weak var proteinName: UILabel!
+
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var sceneKitView: SCNView!
     var file: String = ""
     var name: String = ""
     var info: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.title = name
         sceneKitView.scene = MyScene(file: self.file)
 
@@ -32,17 +32,35 @@ class LigandModelViewController: UIViewController {
         
         sceneKitView.allowsCameraControl = true
         sceneKitView.autoenablesDefaultLighting = true
-        getInfo()
+        let myScene = sceneKitView.scene as! MyScene
+        infoLabel.text = "Name: " + getInfo("_chem_comp.name") + "\n" + "Formula: " + getInfo("_chem_comp.formula") + "\n" + "Weight: " +  getInfo("_chem_comp.formula_weight") + "\n" + "Atoms count: \(myScene.atomsArray.count)"
+        infoLabel.layer.cornerRadius = 1
+        infoLabel.isHidden = true
     }
     
-    func getInfo () {
+    @IBAction func showInfoButton(_ sender: UIButton) {
+        switch infoLabel.isHidden {
+        case true:
+            infoLabel.isHidden = false
+        default:
+            infoLabel.isHidden = true
+        }
+    }
+    
+    func getInfo (_ keyString: String)-> String {
         let splitInfo = info.split(separator: "\n")
         for subInfo in splitInfo {
-            if subInfo.contains("name") {
-                let getName = subInfo.split(separator: " ")
-                proteinName.text = "\(getName[1])"
+            if subInfo.contains(keyString) {
+                var getName = subInfo.split(separator: "\"")
+                if getName.count > 1 {
+                    return "\(getName[1])"
+                } else {
+                    getName = subInfo.split(separator: " ")
+                    return "\(getName[1])"
+                }
             }
         }
+        return ""
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,17 +110,4 @@ class LigandModelViewController: UIViewController {
             self.present(vc, animated: true, completion: nil)
         }
     }
-    
-    
-//    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
-//    self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
-//    let img = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//
-//    if let img = img {
-//        let objectsToShare = [img] as [UIImage]
-//        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-//        self.present(activityVC, animated: true, completion: nil)
-//    }
 }
