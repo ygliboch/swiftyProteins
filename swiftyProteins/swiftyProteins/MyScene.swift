@@ -11,35 +11,57 @@ import SceneKit
 
 class MyScene: SCNScene, SCNSceneRendererDelegate {
     var atomsArray : [SCNNode] = []
+    var conectsArray : [SCNNode] = []
     
     init(file: String) {
         super.init()
-        
         let splitFile = file.split(separator: "\n")
+        
         for split in splitFile {
             let spaceString = split.split(separator: " ")
             if spaceString[0] == "ATOM" {
-                let newSphereGeometry = SCNSphere(radius: 0.4)
-                newSphereGeometry.firstMaterial!.diffuse.contents = UIColor.purple
-                newSphereGeometry.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["\(spaceString[11])"]
-                let newSphereNode = SCNNode(geometry: newSphereGeometry)
-                newSphereNode.position = SCNVector3Make((spaceString[6] as NSString).floatValue, (spaceString[7] as NSString).floatValue, (spaceString[8] as NSString).floatValue)
-                atomsArray.append(newSphereNode)
-                newSphereNode.name = "\(spaceString[11])"
-                self.rootNode.addChildNode(newSphereNode)
+                newAtom(atomString: spaceString)
             } else if spaceString[0] == "CONECT" {
-                var i = 2
-                let lastIndex = spaceString.count - 1
-                for _ in spaceString {
-                    if i <= lastIndex  && (spaceString[1] as NSString).integerValue - 1 < (spaceString[i] as NSString).integerValue - 1 {
-                        let node = CylinderLine(v1: atomsArray[(spaceString[1] as NSString).integerValue - 1].position, v2: atomsArray[(spaceString[i] as NSString).integerValue - 1].position)
-                        self.rootNode.addChildNode(node)
-                    }
-                    i += 1
-                }
+                newConect(connectString: spaceString)
             }
         }
+    }
+    
+    func newConect(connectString: [Substring.SubSequence]) {
+        let firstIndex = (connectString[1] as NSString).integerValue - 1
+        if firstIndex < 0 || firstIndex >= atomsArray.count { return }
+        let firstNode = atomsArray[firstIndex]
         
+        var i = 2
+        
+        while i < connectString.count  {
+            let secondIndex = (connectString[i] as NSString).integerValue - 1
+            if secondIndex < 0 || secondIndex >= atomsArray.count { break }
+            let secondNode = atomsArray[(connectString[i] as NSString).integerValue - 1]
+            
+            if firstIndex < secondIndex {
+                let newConectNode = CylinderLine(v1: firstNode.position, v2: secondNode.position)
+                if firstNode.name == "H" || secondNode.name == "H" {
+                    newConectNode.name = "conect with hydrogen"
+                }
+                conectsArray.append(newConectNode)
+                self.rootNode.addChildNode(newConectNode)
+            }
+            i += 1
+        }
+    }
+    
+    func newAtom(atomString: [Substring.SubSequence]) {
+        let newSphereGeometry = SCNSphere(radius: 0.4)
+        newSphereGeometry.firstMaterial!.diffuse.contents = UIColor.purple
+        newSphereGeometry.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["\(atomString[11])"]
+        
+        let newSphereNode = SCNNode(geometry: newSphereGeometry)
+        newSphereNode.position = SCNVector3Make((atomString[6] as NSString).floatValue, (atomString[7] as NSString).floatValue, (atomString[8] as NSString).floatValue)
+        newSphereNode.name = "\(atomString[11])"
+        
+        atomsArray.append(newSphereNode)
+        self.rootNode.addChildNode(newSphereNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,8 +70,7 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
 }
 
 
-class   CylinderLine: SCNNode
-{
+class   CylinderLine: SCNNode {
     init (v1: SCNVector3, v2: SCNVector3) {
         super.init()
         let parentNode = SCNNode()

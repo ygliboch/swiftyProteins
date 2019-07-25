@@ -137,7 +137,7 @@
                                 <color key="backgroundColor" red="0.12906783470864436" green="0.12831305204952947" blue="0.12982261736775924" alpha="0.7695665259942005" colorSpace="custom" customColorSpace="displayP3"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hO-LA-FnS">
-                                <rect key="frame" x="300" y="811" width="99" height="36"/>
+                                <rect key="frame" x="366" y="811" width="33" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Info">
                                     <color key="titleColor" red="0.80341585439999996" green="0.80215995969999998" blue="0.82409731220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -160,13 +160,44 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thl-8Z-o6n">
+                                <rect key="frame" x="255" y="811" width="96" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Hydrogens">
+                                    <color key="titleColor" red="0.80341585439999996" green="0.80215995969999998" blue="0.82409731220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="showHiddenHydrogens:" destination="yZ3-CO-RW7" eventType="touchUpInside" id="ZmZ-O0-hPk"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQS-R3-fWU">
+                                <rect key="frame" x="92" y="163" width="230" height="230"/>
+                                <color key="backgroundColor" red="0.12906783469999999" green="0.12831305200000001" blue="0.12982261740000001" alpha="0.61507708940000005" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="XtV-ya-YV1"/>
+                                    <constraint firstAttribute="height" constant="230" id="gnu-tU-zYX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMh-Bl-Rc0">
+                                <rect key="frame" x="166" y="811" width="74" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Diagram">
+                                    <color key="titleColor" red="0.80341585439999996" green="0.80215995969999998" blue="0.82409731220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMoleculeImage:" destination="yZ3-CO-RW7" eventType="touchUpInside" id="six-tV-w3D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="DMh-Bl-Rc0" secondAttribute="bottom" constant="15" id="1mP-Xl-ZSf"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="y2O-f4-Orq" secondAttribute="bottom" id="8KG-xb-8g7"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="bottom" secondItem="LPb-xr-w3V" secondAttribute="bottom" id="A2K-s3-IWD"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="trailing" secondItem="y2O-f4-Orq" secondAttribute="trailing" id="Bcr-ix-BhD"/>
                             <constraint firstItem="y2O-f4-Orq" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="COM-79-WxU"/>
+                            <constraint firstItem="bQS-R3-fWU" firstAttribute="centerX" secondItem="LPb-xr-w3V" secondAttribute="centerX" id="CtO-60-pjo"/>
+                            <constraint firstItem="bQS-R3-fWU" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" constant="75" id="EY1-4V-4vv"/>
                             <constraint firstItem="Mzh-o0-hVu" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" constant="15" id="K2A-Ej-oo3"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="trailing" secondItem="LPb-xr-w3V" secondAttribute="trailing" id="LWg-MR-aCM"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="leading" secondItem="LPb-xr-w3V" secondAttribute="leading" id="NmP-Jf-1ZV"/>
@@ -174,8 +205,10 @@
                             <constraint firstItem="Mzh-o0-hVu" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" constant="20" id="TuE-YH-Gf9"/>
                             <constraint firstItem="id7-Gw-7bE" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="Tx3-Yi-3xW"/>
                             <constraint firstItem="y2O-f4-Orq" firstAttribute="top" secondItem="LPb-xr-w3V" secondAttribute="top" id="UMR-Bl-aq9"/>
+                            <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="thl-8Z-o6n" secondAttribute="bottom" constant="15" id="Zhd-9i-IhV"/>
+                            <constraint firstItem="5hO-LA-FnS" firstAttribute="leading" secondItem="thl-8Z-o6n" secondAttribute="trailing" constant="15" id="ac7-nF-nHd"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="trailing" secondItem="Mzh-o0-hVu" secondAttribute="trailing" constant="15" id="m2n-lm-ses"/>
-                            <constraint firstItem="5hO-LA-FnS" firstAttribute="leading" relation="lessThanOrEqual" secondItem="LPb-xr-w3V" secondAttribute="leading" constant="300" id="sb8-X2-fde"/>
+                            <constraint firstItem="thl-8Z-o6n" firstAttribute="leading" secondItem="DMh-Bl-Rc0" secondAttribute="trailing" constant="15" id="uux-jc-a0p"/>
                             <constraint firstItem="LPb-xr-w3V" firstAttribute="bottom" secondItem="5hO-LA-FnS" secondAttribute="bottom" constant="15" id="xRV-eq-VNf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LPb-xr-w3V"/>
@@ -189,6 +222,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="infoLabel" destination="Mzh-o0-hVu" id="ayA-yh-t70"/>
+                        <outlet property="moleculeImage" destination="bQS-R3-fWU" id="1pM-g9-xLP"/>
                         <outlet property="sceneKitView" destination="id7-Gw-7bE" id="IIH-mJ-GMP"/>
                     </connections>
                 </viewController>

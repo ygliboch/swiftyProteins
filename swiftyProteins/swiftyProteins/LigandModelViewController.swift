@@ -12,11 +12,16 @@ import SceneKit
 class LigandModelViewController: UIViewController {
 
 
+    @IBOutlet weak var moleculeImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var sceneKitView: SCNView!
     var file: String = ""
     var name: String = ""
     var info: String = ""
+    var myScene: MyScene?
+    var atomsArray: [SCNNode] = []
+    var conectsArray: [SCNNode] = []
+    var hydrogenHidden: Bool?
     
     
     override func viewDidLoad() {
@@ -32,15 +37,28 @@ class LigandModelViewController: UIViewController {
         
         sceneKitView.allowsCameraControl = true
         sceneKitView.autoenablesDefaultLighting = true
-        let myScene = sceneKitView.scene as! MyScene
+        myScene = sceneKitView.scene as? MyScene
+        atomsArray = myScene!.atomsArray
+        conectsArray = myScene!.conectsArray
         let nameString = getInfo("_chem_comp.name")
         var text = ""
         if nameString.isEmpty == false {
             text = "Name: " + nameString + "\n"
         }
-        infoLabel.text = text + "Formula: " + getInfo("_chem_comp.formula") + "\n" + "Weight: " +  getInfo("_chem_comp.formula_weight") + "\n" + "Atoms count: \(myScene.atomsArray.count)"
-        infoLabel.layer.cornerRadius = 1
+        infoLabel.text = text + "Formula: " + getInfo("_chem_comp.formula") + "\n" + "Weight: " +  getInfo("_chem_comp.formula_weight") + "\n" + "Atoms count: \(atomsArray.count)"
         infoLabel.isHidden = true
+        hydrogenHidden = false
+        if let url = URL(string: "https://cdn.rcsb.org/etl/ligand/img/\(name.first!)/\(name)/\(name)-large.png") {
+            if let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    self.moleculeImage.image = UIImage(data: data)
+//                    self.moleculeImage.contentMode = .scaleToFill
+                }
+            } else {
+                print("error")
+            }
+        }
+        moleculeImage.isHidden = true
     }
     
     @IBAction func showInfoButton(_ sender: UIButton) {
@@ -49,6 +67,43 @@ class LigandModelViewController: UIViewController {
             infoLabel.isHidden = false
         default:
             infoLabel.isHidden = true
+        }
+    }
+    @IBAction func showMoleculeImage(_ sender: Any) {
+        switch moleculeImage.isHidden {
+        case true:
+            moleculeImage.isHidden = false
+        default:
+            moleculeImage.isHidden = true
+        }
+    }
+    
+    @IBAction func showHiddenHydrogens(_ sender: Any) {
+        switch hydrogenHidden {
+        case false:
+            hydrogenHidden = true
+            for isHydrogenNode in atomsArray {
+                if isHydrogenNode.name == "H" {
+                    isHydrogenNode.isHidden = true
+                }
+            }
+            for isHydrogenConect in conectsArray {
+                if isHydrogenConect.name == "conect with hydrogen" {
+                    isHydrogenConect.isHidden = true
+                }
+            }
+        default:
+            hydrogenHidden = false
+            for isHydrogen in atomsArray {
+                if isHydrogen.name == "H" {
+                    isHydrogen.isHidden = false
+                }
+            }
+            for isHydrogenConect in conectsArray {
+                if isHydrogenConect.name == "conect with hydrogen" {
+                    isHydrogenConect.isHidden = false
+                }
+            }
         }
     }
     
