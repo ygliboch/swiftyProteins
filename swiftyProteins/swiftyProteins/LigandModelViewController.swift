@@ -11,7 +11,6 @@ import SceneKit
 
 class LigandModelViewController: UIViewController {
 
-
     @IBOutlet weak var moleculeImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var sceneKitView: SCNView!
@@ -52,7 +51,6 @@ class LigandModelViewController: UIViewController {
             if let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
                     self.moleculeImage.image = UIImage(data: data)
-//                    self.moleculeImage.contentMode = .scaleToFill
                 }
             } else {
                 print("error")
