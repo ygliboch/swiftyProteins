@@ -25,9 +25,10 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        let imgView = UIImageView(image: UIImage(named: "background"))
-        tableView.backgroundView = imgView
-        imgView.contentMode = .scaleAspectFill
+//        let imgView = UIImageView(image: UIImage(named: "background"))
+//        tableView.backgroundView = imgView
+//        imgView.contentMode = .scaleAspectFill
+        tableView.backgroundColor = .clear
         if let path = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
@@ -67,7 +68,8 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? LigandTableViewCell {
-            cell.backgroundColor = .clear
+//            cell.backgroundColor = .clear
+            cell.contentView.layer.cornerRadius = 5
             cell.titleLabel.text = filterLigands[indexPath.row]
             return cell
         } else {
@@ -93,6 +95,7 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         findFileForLigandModel(name: filterLigands[indexPath.row], completionHandler: {response in
             if response != nil {
                 self.file = response
+                print(response!)
                 self.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
                     if response != nil {
                         self.performSegue(withIdentifier: "show3DModel", sender: response)

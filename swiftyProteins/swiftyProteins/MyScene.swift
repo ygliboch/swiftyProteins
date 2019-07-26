@@ -11,12 +11,43 @@ import SceneKit
 
 class MyScene: SCNScene, SCNSceneRendererDelegate {
     var atomsArray : [SCNNode] = []
-    var conectsArray : [SCNNode] = []
+    var conectsArray : [(SCNNode, Int, Int)] = []
     
     init(file: String) {
         super.init()
+//        let newSphereGeometry = SCNSphere(radius: 0.4)
+//        newSphereGeometry.firstMaterial!.diffuse.contents = UIColor.purple
+//        newSphereGeometry.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["BR"]
+//
+//        let newSphereNode = SCNNode(geometry: newSphereGeometry)
+//        newSphereNode.position = SCNVector3Make(1.0, 3.0, -4.398)
+//        newSphereNode.name = "BR"
+//
+////        atomsArray.append(newSphereNode)
+//        self.rootNode.addChildNode(newSphereNode)
+//
+//        let newSphereGeometry2 = SCNSphere(radius: 0.4)
+//        newSphereGeometry2.firstMaterial!.diffuse.contents = UIColor.purple
+//        newSphereGeometry2.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["BR"]
+//
+//        let newSphereNode2 = SCNNode(geometry: newSphereGeometry2)
+//        newSphereNode2.position = SCNVector3Make(1.0, 3.0, 5.398)
+//        newSphereNode2.name = "BR"
+//
+////        atomsArray.append(newSphereNode2)
+//        self.rootNode.addChildNode(newSphereNode2)
+//
+//        if newSphereNode.position.x == newSphereNode2.position.x && newSphereNode.position.y == newSphereNode2.position.y && newSphereNode.position.z < newSphereNode2.position.z{
+//            print("tuta")
+//            let tmp = newSphereNode.position.z
+//            newSphereNode.position.z = newSphereNode2.position.z
+//            newSphereNode2.position.z = tmp
+//        }
+//        let newConectNode = CylinderLine(v1: newSphereNode.position, v2: newSphereNode2.position, nd2: newSphereNode2)
+////        conectsArray.append((newConectNode, firstIndex, secondIndex))
+//        self.rootNode.addChildNode(newConectNode)
         let splitFile = file.split(separator: "\n")
-        
+
         for split in splitFile {
             let spaceString = split.split(separator: " ")
             if spaceString[0] == "ATOM" {
@@ -39,16 +70,36 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
             if secondIndex < 0 || secondIndex >= atomsArray.count { break }
             let secondNode = atomsArray[(connectString[i] as NSString).integerValue - 1]
             
-            if firstIndex < secondIndex {
-                let newConectNode = CylinderLine(v1: firstNode.position, v2: secondNode.position)
+            if isNewConect(f: firstIndex, s: secondIndex) == true {
+//                print(firstIndex, secondIndex)
+                if firstNode.position.x == secondNode.position.x &&
+                    firstNode.position.y == secondNode.position.y &&
+                    firstNode.position.z < secondNode.position.z {
+                    let tmp = firstNode.position.z
+                    firstNode.position.z = secondNode.position.z
+                    secondNode.position.z = tmp
+                }
+                let newConectNode = CylinderLine(v1: firstNode.position, v2: secondNode.position, nd2: secondNode)
                 if firstNode.name == "H" || secondNode.name == "H" {
                     newConectNode.name = "conect with hydrogen"
                 }
-                conectsArray.append(newConectNode)
+                conectsArray.append((newConectNode, firstIndex, secondIndex))
                 self.rootNode.addChildNode(newConectNode)
             }
             i += 1
         }
+    }
+    
+    func isNewConect(f: Int, s: Int) -> Bool {
+        for conect in conectsArray {
+            if conect.1 == f && conect.2 == s {
+                return false
+            }
+            if conect.2 == f && conect.1 == s {
+                return false
+            }
+        }
+        return true
     }
     
     func newAtom(atomString: [Substring.SubSequence]) {
@@ -71,15 +122,13 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
 
 
 class   CylinderLine: SCNNode {
-    init (v1: SCNVector3, v2: SCNVector3) {
+    init (v1: SCNVector3, v2: SCNVector3, nd2: SCNNode) {
         super.init()
         let parentNode = SCNNode()
-        var height = vectorLength(pos1: v1, pos2: v2)
-        if (height < 0){
-            height *= -1
-        }
         
+        let height = distance(receiver: v2, v1: v1 )
         self.position = v1
+        
         let nodeV2 = SCNNode()
         nodeV2.position = v2
         parentNode.addChildNode(nodeV2)
@@ -91,15 +140,31 @@ class   CylinderLine: SCNNode {
         cylinder.firstMaterial?.diffuse.contents = UIColor.white
         
         let cylinderNode = SCNNode(geometry: cylinder)
-        cylinderNode.position.y = -height / 2
+        var pos: Float = 1.0
+        pos = -height / 2
+
+        cylinderNode.position.y = pos
         layDown.addChildNode(cylinderNode)
         
         self.addChildNode(layDown)
-        self.constraints = [SCNLookAtConstraint(target: nodeV2)]
+        self.constraints = [SCNLookAtConstraint(target: nd2)]
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func distance(receiver:SCNVector3, v1: SCNVector3) -> Float{
+        let xd = receiver.x - v1.x
+        let yd = receiver.y - v1.y
+        let zd = receiver.z - v1.z
+        let distance = Float(sqrt(xd * xd + yd * yd + zd * zd))
+        
+        if (distance < 0){
+            return (distance * -1)
+        } else {
+            return (distance)
+        }
     }
     
     func vectorLength(pos1: SCNVector3, pos2: SCNVector3) -> Float{

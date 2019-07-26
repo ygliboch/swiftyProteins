@@ -19,7 +19,7 @@ class LigandModelViewController: UIViewController {
     var info: String = ""
     var myScene: MyScene?
     var atomsArray: [SCNNode] = []
-    var conectsArray: [SCNNode] = []
+    var conectsArray: [(SCNNode, Int, Int)] = []
     var hydrogenHidden: Bool?
     
     
@@ -86,8 +86,8 @@ class LigandModelViewController: UIViewController {
                 }
             }
             for isHydrogenConect in conectsArray {
-                if isHydrogenConect.name == "conect with hydrogen" {
-                    isHydrogenConect.isHidden = true
+                if isHydrogenConect.0.name == "conect with hydrogen" {
+                    isHydrogenConect.0.isHidden = true
                 }
             }
         default:
@@ -98,8 +98,8 @@ class LigandModelViewController: UIViewController {
                 }
             }
             for isHydrogenConect in conectsArray {
-                if isHydrogenConect.name == "conect with hydrogen" {
-                    isHydrogenConect.isHidden = false
+                if isHydrogenConect.0.name == "conect with hydrogen" {
+                    isHydrogenConect.0.isHidden = false
                 }
             }
         }
@@ -129,7 +129,21 @@ class LigandModelViewController: UIViewController {
         if hit.isEmpty == false {
             let node = hit[0].node
             if (node.name != nil) {
-                showToast(message: "Atom \(node.name!)")
+                
+                //del me later
+                var i = 0
+                for nd in atomsArray {
+                    if nd == node {
+                        break
+                    }
+                    i += 1
+                }
+                
+                
+                
+                
+                
+                showToast(message: "Atom \(node.name!) \(i)")
             }
         }
     }
