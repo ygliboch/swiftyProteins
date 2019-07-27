@@ -57,7 +57,22 @@ class LigandModelViewController: UIViewController {
             }
         }
         moleculeImage.isHidden = true
+//        spinForLigand(cameraNode)
     }
+    
+//    func spinForLigand (_ camera: SCNNode) {
+//        let spin = CABasicAnimation(keyPath: "rotation")
+//        spin.fromValue = NSValue(scnVector4: SCNVector4(x: 0, y: 1, z: 0, w: 0))
+//        spin.toValue = NSValue(scnVector4: SCNVector4(x: 0, y: 1, z: 0, w: 2.0 * Float.pi))
+//        spin.duration = 3
+//        spin.repeatCount = .infinity
+//
+////        let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi, around: SCNVector3(0, 1, 0), duration: 5))
+//
+//
+//        self.myScene?.rootNode.addAnimation(spin, forKey: "spin around")
+////        camera.addAnimation(spin, forKey: "spin around")
+//    }
     
     @IBAction func showInfoButton(_ sender: UIButton) {
         switch infoLabel.isHidden {
@@ -105,7 +120,7 @@ class LigandModelViewController: UIViewController {
         }
     }
     
-    func getInfo (_ keyString: String)-> String {
+    func getInfo (_ keyString: String) -> String {
         let splitInfo = info.split(separator: "\n")
         for subInfo in splitInfo {
             if subInfo.contains(keyString) {
