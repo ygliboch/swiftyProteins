@@ -35,14 +35,13 @@ class LigandModelViewController: UIViewController {
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3Make(0, 0, 35)
         sceneKitView.scene?.rootNode.addChildNode(cameraNode)
-        
-        
-        
         sceneKitView.allowsCameraControl = true
         sceneKitView.autoenablesDefaultLighting = true
+        
         myScene = sceneKitView.scene as? MyScene
         atomsArray = myScene!.atomsArray
         conectsArray = myScene!.conectsArray
+        
         let nameString = getInfo("_chem_comp.name")
         var text = ""
         if nameString.isEmpty == false {
@@ -142,11 +141,6 @@ class LigandModelViewController: UIViewController {
                     }
                     i += 1
                 }
-                
-                
-                
-                
-                
                 showToast(message: "Atom \(node.name!) \(i)")
             }
         }

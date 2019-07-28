@@ -22,22 +22,22 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
             if spaceString[0] == "ATOM" {
                 newAtom(atomString: spaceString)
             } else if spaceString[0] == "CONECT" {
-                newConect(connectString: spaceString)
+                newConect(conectString: spaceString)
             }
         }
     }
     
-    func newConect(connectString: [Substring.SubSequence]) {
-        let firstIndex = (connectString[1] as NSString).integerValue - 1
+    func newConect(conectString: [Substring.SubSequence]) {
+        let firstIndex = (conectString[1] as NSString).integerValue - 1
         if firstIndex < 0 || firstIndex >= atomsArray.count { return }
         let firstNode = atomsArray[firstIndex]
         
         var i = 2
         
-        while i < connectString.count  {
-            let secondIndex = (connectString[i] as NSString).integerValue - 1
+        while i < conectString.count  {
+            let secondIndex = (conectString[i] as NSString).integerValue - 1
             if secondIndex < 0 || secondIndex >= atomsArray.count { break }
-            let secondNode = atomsArray[(connectString[i] as NSString).integerValue - 1]
+            let secondNode = atomsArray[(conectString[i] as NSString).integerValue - 1]
             
             if isNewConect(f: firstIndex, s: secondIndex) == true {
                 if firstNode.position.x == secondNode.position.x &&

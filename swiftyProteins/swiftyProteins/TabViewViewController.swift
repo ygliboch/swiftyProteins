@@ -24,12 +24,10 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     var name: String?
 
     @IBAction func normalSort(_ sender: UIButton) {
-        print("Normal")
         filterLigands =  filterLigands.sorted(by: {$0.self < $1.self})
         tableView.reloadData()
     }
     @IBAction func reversSort(_ sender: UIButton) {
-        print("Revers")
         filterLigands = filterLigands.sorted(by: {$0.self > $1.self})
         tableView.reloadData()
     }
@@ -113,7 +111,6 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.hideActivityIndicator()
             } else if response != nil {
                 self.file = response
-                print(response!)
                 self.fileManager.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
                     if response!.isEmpty {
                         self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
