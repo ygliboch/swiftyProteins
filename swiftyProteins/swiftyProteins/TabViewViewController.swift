@@ -11,23 +11,38 @@ import UIKit
 class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     
-    var ligands: [String] = []
-    var filterLigands: [String] = []
-    let activityIndicator = UIActivityIndicatorView()
+    @IBOutlet weak var ozButton: UIButton!
+    @IBOutlet weak var zoButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var navBar: UINavigationItem!
+    let fileManager = FileManager()
+    let activityIndicator = UIActivityIndicatorView()
+    var ligands: [String] = []
+    var filterLigands: [String] = []
     var file: String?
     var name: String?
+
+    @IBAction func normalSort(_ sender: UIButton) {
+        print("Normal")
+        filterLigands =  filterLigands.sorted(by: {$0.self < $1.self})
+        tableView.reloadData()
+    }
+    @IBAction func reversSort(_ sender: UIButton) {
+        print("Revers")
+        filterLigands = filterLigands.sorted(by: {$0.self > $1.self})
+        tableView.reloadData()
+    }
     
-    @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        ozButton.layer.cornerRadius = 5
+        zoButton.layer.cornerRadius = 5
+        
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-//        let imgView = UIImageView(image: UIImage(named: "background"))
-//        tableView.backgroundView = imgView
-//        imgView.contentMode = .scaleAspectFill
+        
         tableView.backgroundColor = .clear
         if let path = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
@@ -68,7 +83,6 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? LigandTableViewCell {
-//            cell.backgroundColor = .clear
             cell.contentView.layer.cornerRadius = 5
             cell.titleLabel.text = filterLigands[indexPath.row]
             return cell
@@ -92,12 +106,20 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
         name = filterLigands[indexPath.row]
         self.view.isUserInteractionEnabled = false
         self.tableView.cellForRow(at: indexPath)?.isSelected = true
-        findFileForLigandModel(name: filterLigands[indexPath.row], completionHandler: {response in
-            if response != nil {
+        fileManager.findFileForLigandModel(name: filterLigands[indexPath.row], completionHandler: {response in
+            if response!.isEmpty {
+                self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
+                self.view.isUserInteractionEnabled = true
+                self.hideActivityIndicator()
+            } else if response != nil {
                 self.file = response
                 print(response!)
-                self.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
-                    if response != nil {
+                self.fileManager.findFileForLigandInformation(name: self.filterLigands[indexPath.row], completionHandler: { response in
+                    if response!.isEmpty {
+                        self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
+                        self.view.isUserInteractionEnabled = true
+                        self.hideActivityIndicator()
+                    } else if response != nil {
                         self.performSegue(withIdentifier: "show3DModel", sender: response)
                         self.tableView.cellForRow(at: indexPath)?.isSelected = false
                         self.hideActivityIndicator()
@@ -108,45 +130,6 @@ class TabViewViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.makeAlert(title: "Error", message: "Ligand not found")
             }
         })
-    }
-    
-    func findFileForLigandModel(name: String, completionHandler: @escaping (String?) -> Void)  {
-        guard let url = URL(string: "https://files.rcsb.org/ligands/\(name.first!)/\(name)/\(name)_ideal.pdb") else { return }
-        let task = URLSession.shared.downloadTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                if let data = data {
-                    if let pdbfile : String = try? String(contentsOf: data) {
-                        if pdbfile.isEmpty {
-                            self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
-                            self.view.isUserInteractionEnabled = true
-                            self.hideActivityIndicator()
-                        }
-                        completionHandler(pdbfile)
-                    }
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    func findFileForLigandInformation(name: String, completionHandler: @escaping (String?) -> Void) {
-        guard let url = URL(string: "https://files.rcsb.org/ligands/download/\(name).cif") else { return }
-        let task = URLSession.shared.downloadTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                if let data = data {
-                    if let cifFile: String = try? String(contentsOf: data) {
-                        if cifFile.isEmpty == false {
-                            completionHandler(cifFile)
-                        } else {
-                            self.makeAlert(title: "Error", message: "Source file doesn't exist ☹️")
-                            self.view.isUserInteractionEnabled = true
-                            self.hideActivityIndicator()
-                        }
-                    }
-                }
-            }
-        }
-        task.resume()
     }
     
     func makeAlert(title: String, message: String) {

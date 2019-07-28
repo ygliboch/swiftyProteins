@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/LigandModelViewController.swift"
-            timestampString = "585851102.484156"
+            timestampString = "586006017.829417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/TabViewViewController.swift"
-            timestampString = "585851102.484266"
+            timestampString = "586006017.829475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/LigandModelViewController.swift"
-            timestampString = "585851102.484327"
+            timestampString = "586006017.829784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "getInfo(_:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "showHiddenHydrogens(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/MyScene.swift"
-            timestampString = "585851102.4843791"
+            timestampString = "586006017.829828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "init(v1:v2:nd2:)"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "distance(receiver:v1:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/MyScene.swift"
-            timestampString = "585851102.484452"
+            timestampString = "586006017.829864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "newConect(connectString:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "isNewConect(f:s:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/MyScene.swift"
-            timestampString = "585851102.484522"
+            timestampString = "586006017.829898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "newConect(connectString:)"
-            landmarkType = "7">
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "MyScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftyProteins/MyScene.swift"
-            timestampString = "585851102.484592"
+            timestampString = "586006017.8299299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "init(v1:v2:nd2:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "distance(receiver:v1:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

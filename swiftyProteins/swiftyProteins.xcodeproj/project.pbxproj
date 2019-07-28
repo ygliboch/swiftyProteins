@@ -13,6 +13,7 @@
 		649060E922DF95A100F5082D /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 649060E822DF95A100F5082D /* ligands.txt */; };
 		649060EB22DF98ED00F5082D /* LigandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */; };
 		64AC663E22E21268005030EA /* LigandModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AC663D22E21268005030EA /* LigandModelViewController.swift */; };
+		64B2C37022EDB65600CB3CA2 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2C36F22EDB65600CB3CA2 /* FilesManager.swift */; };
 		64BFE87022DF448E00AE0385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFE86F22DF448E00AE0385 /* AppDelegate.swift */; };
 		64BFE87222DF448E00AE0385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFE87122DF448E00AE0385 /* LoginViewController.swift */; };
 		64BFE87522DF448E00AE0385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BFE87322DF448E00AE0385 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		649060E822DF95A100F5082D /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
 		649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandTableViewCell.swift; sourceTree = "<group>"; };
 		64AC663D22E21268005030EA /* LigandModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandModelViewController.swift; sourceTree = "<group>"; };
+		64B2C36F22EDB65600CB3CA2 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		64BFE86C22DF448E00AE0385 /* swiftyProteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftyProteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFE86F22DF448E00AE0385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64BFE87122DF448E00AE0385 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				649060E422DF82F500F5082D /* TabViewViewController.swift */,
 				6419AF0F22E6064900CE04E2 /* Colors.swift */,
 				B6DBDD1E22E85D9500BCFB75 /* Assets.xcassets */,
+				64B2C36F22EDB65600CB3CA2 /* FilesManager.swift */,
 				6419AF0D22E5D10C00CE04E2 /* MyScene.swift */,
 				64AC663D22E21268005030EA /* LigandModelViewController.swift */,
 				649060EA22DF98ED00F5082D /* LigandTableViewCell.swift */,
@@ -157,6 +160,7 @@
 				64BFE87222DF448E00AE0385 /* LoginViewController.swift in Sources */,
 				64BFE87022DF448E00AE0385 /* AppDelegate.swift in Sources */,
 				6419AF0E22E5D10C00CE04E2 /* MyScene.swift in Sources */,
+				64B2C37022EDB65600CB3CA2 /* FilesManager.swift in Sources */,
 				6419AF1022E6064900CE04E2 /* Colors.swift in Sources */,
 				64AC663E22E21268005030EA /* LigandModelViewController.swift in Sources */,
 				649060EB22DF98ED00F5082D /* LigandTableViewCell.swift in Sources */,
@@ -307,13 +311,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AK62F95LBK;
+				DEVELOPMENT_TEAM = VT5BZ37CZN;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = unitFactory;
+				PRODUCT_BUNDLE_IDENTIFIER = UnitFactoty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -325,13 +329,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AK62F95LBK;
+				DEVELOPMENT_TEAM = VT5BZ37CZN;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = unitFactory;
+				PRODUCT_BUNDLE_IDENTIFIER = UnitFactoty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

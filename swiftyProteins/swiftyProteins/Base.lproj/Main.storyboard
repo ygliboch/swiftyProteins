@@ -71,8 +71,28 @@
                                 <color key="barTintColor" red="0.12906783469999999" green="0.12831305200000001" blue="0.12982261740000001" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cET-rU-58q">
+                                <rect key="frame" x="5" y="144" width="202" height="31"/>
+                                <color key="backgroundColor" red="0.12906783469999999" green="0.12831305200000001" blue="0.12982261740000001" alpha="0.51687066329999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="0-Z">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="normalSort:" destination="Hp1-Uf-Aim" eventType="touchUpInside" id="x6L-Vh-dhT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5b-hI-WPv">
+                                <rect key="frame" x="207" y="144" width="202" height="31"/>
+                                <color key="backgroundColor" red="0.12906783469999999" green="0.12831305200000001" blue="0.12982261740000001" alpha="0.51687066329999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Z-0">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="reversSort:" destination="Hp1-Uf-Aim" eventType="touchUpInside" id="0W4-q5-3Cb"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sq4-08-Ruh">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="175" width="414" height="687"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="oIG-t7-bVK" customClass="LigandTableViewCell" customModule="swiftyProteins" customModuleProvider="target">
@@ -96,7 +116,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Bfw-V1-gUp" secondAttribute="bottom" constant="8" id="xIt-xX-IYC"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.27028011660000001" green="0.27028011660000001" blue="0.27028011660000001" alpha="0.3598976673" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.12906783469999999" green="0.12831305200000001" blue="0.12982261740000001" alpha="0.61507708940000005" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="titleLabel" destination="Bfw-V1-gUp" id="3Zw-6c-mFd"/>
                                         </connections>
@@ -107,20 +127,31 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GFs-VM-CFw" firstAttribute="bottom" secondItem="sq4-08-Ruh" secondAttribute="bottom" id="B8I-qN-zcB"/>
+                            <constraint firstItem="sq4-08-Ruh" firstAttribute="top" secondItem="F5b-hI-WPv" secondAttribute="bottom" id="FUF-EB-tsw"/>
                             <constraint firstItem="sDp-Kh-oYL" firstAttribute="trailing" secondItem="GFs-VM-CFw" secondAttribute="trailing" id="NDi-hQ-IXn"/>
+                            <constraint firstItem="cET-rU-58q" firstAttribute="width" secondItem="F5b-hI-WPv" secondAttribute="width" id="SSH-vs-Mxo"/>
+                            <constraint firstItem="sq4-08-Ruh" firstAttribute="top" secondItem="cET-rU-58q" secondAttribute="bottom" id="WwQ-Hr-3s7"/>
+                            <constraint firstItem="cET-rU-58q" firstAttribute="top" secondItem="sDp-Kh-oYL" secondAttribute="bottom" id="Ypq-oR-dl0"/>
                             <constraint firstItem="sq4-08-Ruh" firstAttribute="trailing" secondItem="GFs-VM-CFw" secondAttribute="trailing" id="ZOW-GL-Zli"/>
                             <constraint firstItem="sq4-08-Ruh" firstAttribute="leading" secondItem="GFs-VM-CFw" secondAttribute="leading" id="Zne-mu-1KI"/>
                             <constraint firstItem="sDp-Kh-oYL" firstAttribute="leading" secondItem="GFs-VM-CFw" secondAttribute="leading" id="ewx-Sd-Qrf"/>
                             <constraint firstItem="sDp-Kh-oYL" firstAttribute="top" secondItem="GFs-VM-CFw" secondAttribute="top" id="k4r-fF-Kzf"/>
-                            <constraint firstItem="sq4-08-Ruh" firstAttribute="top" secondItem="sDp-Kh-oYL" secondAttribute="bottom" id="mvb-HK-dwY"/>
+                            <constraint firstItem="F5b-hI-WPv" firstAttribute="top" secondItem="sDp-Kh-oYL" secondAttribute="bottom" id="kPD-2g-koh"/>
+                            <constraint firstItem="GFs-VM-CFw" firstAttribute="trailing" secondItem="F5b-hI-WPv" secondAttribute="trailing" constant="5" id="lee-iv-EDd"/>
+                            <constraint firstItem="sq4-08-Ruh" firstAttribute="top" secondItem="sDp-Kh-oYL" secondAttribute="bottom" constant="31" id="mvb-HK-dwY"/>
+                            <constraint firstItem="cET-rU-58q" firstAttribute="leading" secondItem="GFs-VM-CFw" secondAttribute="leading" constant="5" id="nER-mt-3Cs"/>
+                            <constraint firstItem="F5b-hI-WPv" firstAttribute="leading" secondItem="cET-rU-58q" secondAttribute="trailing" id="t7b-V6-FN5"/>
+                            <constraint firstItem="F5b-hI-WPv" firstAttribute="leading" secondItem="cET-rU-58q" secondAttribute="trailing" id="uFW-fI-hrt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GFs-VM-CFw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ligands" id="kRD-AI-DcZ"/>
                     <connections>
                         <outlet property="navBar" destination="kRD-AI-DcZ" id="4yt-ig-aKB"/>
+                        <outlet property="ozButton" destination="cET-rU-58q" id="hiR-PH-twj"/>
                         <outlet property="searchBar" destination="sDp-Kh-oYL" id="ZIN-bI-bvR"/>
                         <outlet property="tableView" destination="sq4-08-Ruh" id="qAz-me-SvF"/>
+                        <outlet property="zoButton" destination="F5b-hI-WPv" id="GPM-NS-DwB"/>
                         <segue destination="yZ3-CO-RW7" kind="show" identifier="show3DModel" id="9w5-hw-3ee"/>
                     </connections>
                 </viewController>

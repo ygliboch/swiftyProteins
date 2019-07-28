@@ -15,37 +15,6 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
     
     init(file: String) {
         super.init()
-//        let newSphereGeometry = SCNSphere(radius: 0.4)
-//        newSphereGeometry.firstMaterial!.diffuse.contents = UIColor.purple
-//        newSphereGeometry.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["BR"]
-//
-//        let newSphereNode = SCNNode(geometry: newSphereGeometry)
-//        newSphereNode.position = SCNVector3Make(1.0, 3.0, -4.398)
-//        newSphereNode.name = "BR"
-//
-////        atomsArray.append(newSphereNode)
-//        self.rootNode.addChildNode(newSphereNode)
-//
-//        let newSphereGeometry2 = SCNSphere(radius: 0.4)
-//        newSphereGeometry2.firstMaterial!.diffuse.contents = UIColor.purple
-//        newSphereGeometry2.firstMaterial!.diffuse.contents = ColorsForAtoms.colors["BR"]
-//
-//        let newSphereNode2 = SCNNode(geometry: newSphereGeometry2)
-//        newSphereNode2.position = SCNVector3Make(1.0, 3.0, 5.398)
-//        newSphereNode2.name = "BR"
-//
-////        atomsArray.append(newSphereNode2)
-//        self.rootNode.addChildNode(newSphereNode2)
-//
-//        if newSphereNode.position.x == newSphereNode2.position.x && newSphereNode.position.y == newSphereNode2.position.y && newSphereNode.position.z < newSphereNode2.position.z{
-//            print("tuta")
-//            let tmp = newSphereNode.position.z
-//            newSphereNode.position.z = newSphereNode2.position.z
-//            newSphereNode2.position.z = tmp
-//        }
-//        let newConectNode = CylinderLine(v1: newSphereNode.position, v2: newSphereNode2.position, nd2: newSphereNode2)
-////        conectsArray.append((newConectNode, firstIndex, secondIndex))
-//        self.rootNode.addChildNode(newConectNode)
         let splitFile = file.split(separator: "\n")
 
         for split in splitFile {
@@ -71,7 +40,6 @@ class MyScene: SCNScene, SCNSceneRendererDelegate {
             let secondNode = atomsArray[(connectString[i] as NSString).integerValue - 1]
             
             if isNewConect(f: firstIndex, s: secondIndex) == true {
-//                print(firstIndex, secondIndex)
                 if firstNode.position.x == secondNode.position.x &&
                     firstNode.position.y == secondNode.position.y &&
                     firstNode.position.z < secondNode.position.z {
